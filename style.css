@@ -1,11 +1,11 @@
 .services {
-    height: 100%;
-    width: 768px;
+    height: 100vh;
     background-color: white;
 }
 
-html, body {
-    overflow: hidden;
+html,
+body {
+
     margin: 0;
     padding: 0;
 }
@@ -34,13 +34,16 @@ body {
 
 .menu {
     position: relative;
+    display: flex;
+    flex-direction: column;
     max-width: 320px;
-    height: 100%; !important
+    height: 100vh;
     background-color: white;
     padding: 0 24px;
     box-sizing: border-box;
     box-shadow: 16px 0 52px #6a708e;
     z-index: 1;
+    justify-content: space-between;
 }
 
 .top {
@@ -68,7 +71,6 @@ button {
 }
 
 .menu-main {
-    height: 100%;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -94,6 +96,32 @@ button {
     color: #7e7e82;
 }
 
+.menu-tab {
+  position: relative;
+  padding-left: 12px;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.menu-tab:hover {
+  background-color: #f4f4f4;
+  color: #7e7e82; /* как у активного, но только при наведении */
+}
+
+/* подсвеченный highlight-псевдоэлемент */
+.menu-tab:hover::before {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  transform: rotate(-180deg);
+  background-color: rgba(65, 246, 215, 0.5); /* полупрозрачный акцент */
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
 .highlight {
     width: 4px;
     height: 40px;
@@ -107,10 +135,13 @@ button {
 }
 
 .menu-main__contacts {
-    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    margin-bottom: 32px;
 }
 
-.menu-main__contacts-icons{
+.menu-main__contacts-icons {
     display: flex;
     gap: 16px;
     margin-bottom: 16px;
